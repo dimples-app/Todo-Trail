@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css"
-import Todo from "./TodoComponent/Todo";
+import TodoForm from "./Component/TodoForm";
+
 
 function App() {
   return (
     <>
       <div>To-Do Trail</div>
+      <TodoForm />
     </>
   );
 }
