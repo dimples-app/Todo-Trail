@@ -12,13 +12,20 @@ function Todo() {
     //Add items
     const addItems = () => {
         // return in case of no input
-        if(!input) return alert("Please enter items in list")
+        if(!input)  {
+            return alert("Please enter items in list")
+        } else {
+            const newInput =  {
+                id: new Date().getTime().toString(),
+                name: input,
+            }
         
         // add to add
         // const arr = []
         // setItems( [...items, arr.push(input)])
-        setItems( [...items, input])
+        setItems( [...items, newInput])
         setInputdata("")
+        }
     }
 
     //delete item
@@ -34,8 +41,8 @@ function Todo() {
     // handle edit 
 
     const handleEditItem = (id) => {
-        const itemToEdit = items.find((item) => {
-            return item.id === id;
+        const itemToEdit = items.find((item, index) => {
+            return index === id;
         })
         setInputdata(itemToEdit)
         setEditItem(id)
@@ -71,7 +78,7 @@ function Todo() {
                         {
                             items.map((item, index) => (
                                 <div className="eachItem" key={index}>
-                                    <h3>{item}</h3>
+                                    <h3>{item.name}</h3>
                                     <i className="fa fa-edit add-btn" title="Edit item" onClick={() => handleEditItem(index)}></i>
                                     <i className="fa fa-trash add-btn" title="Delete item" onClick={() => handleDeleteItem(index)}></i> 
                                 </div>

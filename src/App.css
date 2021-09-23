@@ -23,19 +23,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-/* .app-background {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    text-align: center;
-    background-color: #1CDBF5;
-    color: white;
-    justify-content: flex-start;
-    align-items: center;
-} */
-
 .main-div {
   min-height: 100vh;
   background: #060822;
@@ -45,7 +32,6 @@ body {
   color: white;
   /* align-items: center; */
 }
-
 
 .child-div {
   text-align: center;
@@ -101,7 +87,6 @@ input:focus {
   -webkit-box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
 }
-
 
 .todo-btn {
   width: 5rem;
@@ -159,7 +144,6 @@ input:focus {
   font-size: 1.6rem;
   color: #fff;
 }
-
 .fa-trash-alt,
 .fa-edit {
   /* margin-left: -2.5rem; */
@@ -180,8 +164,9 @@ input:focus {
   margin-left: -3.5rem;
 }
 
+
 .eachItem:hover .fa-trash-alt {
-  color: goldenrod
+  color: rgb(214, 47, 61);
 }
 
 .eachItem:hover .fa-edit {
@@ -189,7 +174,7 @@ input:focus {
 }
 
 .eachItem:hover h3 {
-  color: orangered
+  color: goldenrod
 }
 
 .btn {
