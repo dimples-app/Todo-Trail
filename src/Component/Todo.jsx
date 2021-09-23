@@ -3,6 +3,7 @@ import logo from "../Assets/todo1.png"
 function Todo() {
     const [input, setInputdata] = useState();
     const [items, setItems] = useState([]);
+    const [editItem, setEditItem] = useState("");
 
     const handleChange = (event) => {
         setInputdata(event.target.value)
@@ -33,7 +34,11 @@ function Todo() {
     // handle edit 
 
     const handleEditItem = (id) => {
-
+        const itemToEdit = items.find((item) => {
+            return item.id === id;
+        })
+        setInputdata(itemToEdit)
+        setEditItem(id)
     }
 
     //Remove All Items
