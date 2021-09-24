@@ -13,7 +13,7 @@ function Todo() {
     const [input, setInputdata] = useState();
     const [items, setItems] = useState(getLocalData());
     const [editItem, setEditItem] = useState("");
-    const [toggle, isToggle] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
         localStorage.setItem("mytodolist", JSON.stringify(items))
@@ -58,8 +58,9 @@ function Todo() {
         const itemToEdit = items.find((item, index) => {
             return index === id;
         })
-        setInputdata(itemToEdit)
+        setInputdata(itemToEdit.name)
         setEditItem(id)
+        setToggle(true)
     }
 
     //Remove All Items
@@ -86,7 +87,9 @@ function Todo() {
                             value={input}
                             onChange={handleChange}
                             />
-                            <i class="fa fa-plus add-btn" title="add item" onClick={addItems}></i> 
+                            {toggle ? <i class="fa fa-edit add-btn" title="add item" onClick={addItems}></i> :
+                            <i class="fa fa-plus add-btn" title="add item" onClick={addItems}></i>}
+                             
                     </div>
                     <div className="showItems">
                         {
