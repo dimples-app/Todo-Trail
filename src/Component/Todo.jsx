@@ -1,9 +1,23 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import logo from "../Assets/todo1.png"
+
+const getLocalData = () => {
+    const lists = localStorage.getItem("mytodolist")
+    if(lists) {
+        return JSON.parse(lists);
+    } else {
+        return [];
+    }
+}
 function Todo() {
     const [input, setInputdata] = useState();
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(getLocalData());
     const [editItem, setEditItem] = useState("");
+    const [toggle, isToggle] = useState(false);
+
+    useEffect(() => {
+        localStorage.setItem("mytodolist", JSON.stringify(items))
+    }, [items])
 
     const handleChange = (event) => {
         setInputdata(event.target.value)
