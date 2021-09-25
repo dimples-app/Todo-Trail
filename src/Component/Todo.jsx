@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import logo from "../Assets/todo1.png"
 
+//function to get local data
 const getLocalData = () => {
     const lists = localStorage.getItem("mytodolist")
     if(lists) {
@@ -9,6 +10,11 @@ const getLocalData = () => {
         return [];
     }
 }
+
+/**
+ * 
+ * @returns 
+ */
 function Todo() {
     const [input, setInputdata] = useState();
     const [items, setItems] = useState(getLocalData());
@@ -28,11 +34,23 @@ function Todo() {
         // return in case of no input
         if(!input)  {
             return alert("Please enter items in list")
+        } else if (input && toggle) {
+            setItems(
+                items.map((item) => {
+                    if(item.id === editItem) {
+                        return { ...item, name: input} 
+                    }
+                    return item
+                })
+            )
+        setInputdata("")
+        setEditItem()
+        setToggle(false)
         } else {
             const newInput =  {
                 id: new Date().getTime().toString(),
                 name: input,
-            }
+        }
         
         // add to add
         // const arr = []
@@ -104,11 +122,9 @@ function Todo() {
                         
                     </div>
 
-
                     <div className="showitems">
                         <button className="btn effect04" data-sm-link-text="Remove All" onClick={removeAllItems}>  <span> Check List</span></button>
                     </div>
-
 
                 </div>
             </div>
