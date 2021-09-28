@@ -16,7 +16,7 @@ const getLocalData = () => {
  * @returns 
  */
 function Todo() {
-    const [input, setInputdata] = useState();
+    const [input, setInput] = useState();
     const [items, setItems] = useState(getLocalData());
     const [editItem, setEditItem] = useState("");
     const [toggle, setToggle] = useState(false);
@@ -26,44 +26,42 @@ function Todo() {
     }, [items])
 
     const handleChange = (event) => {
-        setInputdata(event.target.value)
+        setInput(event.target.value)
     }
 
     //Add items
-    const addItems = () => {
+    const handleAddItems = () => {
         // return in case of no input
-        if(!input)  {
-            return alert("Please enter items in list")
-        } else if (input && toggle) {
+        if (!input) {
+            alert('please enter todo item/items');
+        } else if(input && !toggle) {
             setItems(
                 items.map((item) => {
-                    if(item.id === editItem) {
-                        return { ...item, name: input} 
+                    if (item.id === editItem) {
+                        return { ...item, name: input }
                     }
-                    return item
+                    return item;
                 })
             )
-        setInputdata("")
-        setEditItem()
-        setToggle(false)
+                 setToggle(true);
+
+                 setInput('');
+
+                 setEditItem(null);
         } else {
-            const newInput =  {
-                id: new Date().getTime().toString(),
-                name: input,
-        }
-        
-        // add to add
-        // const arr = []
-        // setItems( [...items, arr.push(input)])
-        setItems( [...items, newInput])
-        setInputdata("")
+            const allInputData = { 
+                id: new Date().getTime().toString(), 
+                name:input 
+            }
+            setItems([...items, allInputData]);
+            setInput('')
         }
     }
 
     //delete item
 
     const handleDeleteItem = (id) => {
-        console.log(id);
+        //console.log(id);
       const itemsAfterDelete = items.filter((item, index) => {
           return index !== id;
       })
@@ -73,17 +71,21 @@ function Todo() {
     // handle edit 
 
     const handleEditItem = (id) => {
-        const itemToEdit = items.find((item, index) => {
-            return index === id;
-        })
-        setInputdata(itemToEdit.name)
-        setEditItem(id)
-        setToggle(true)
+        let newEditItem = items.find((item) => {
+            return item.id === id
+        });
+        //console.log(newEditItem);
+
+        setToggle(false);
+
+        setInput(newEditItem);
+
+        setEditItem(id);
     }
 
     //Remove All Items
 
-    const removeAllItems = () => {
+    const handleRemoveAllItems = () => {
         setItems([])
     }
 
@@ -91,43 +93,48 @@ function Todo() {
         <>
             <div className="main-div">
                 <div className="child-div">
-                    
                     <figure>
-                        <img src= {logo} alt="Logoimage" />
-                        <figcaption>
-                            Add your list here
-                        </figcaption>
+                        <img src={logo} alt="todologo" />
+                        <figcaption>Add Your List Here ✌</figcaption>
                     </figure>
+
                     <div className="addItems">
-                            <input 
-                            type="text" 
-                            placeholder="Add Items..." 
-                            value={input}
-                            onChange={handleChange}
-                            />
-                            {toggle ? <i class="fa fa-edit add-btn" title="add item" onClick={addItems}></i> :
-                            <i class="fa fa-plus add-btn" title="add item" onClick={addItems}></i>}
-                             
-                    </div>
-                    <div className="showItems">
+                        <input type="text" placeholder=" Add Items..."
+                           value={input} 
+                           onChange={(e) => setInput(e.target.value) }
+                        />
                         {
-                            items.map((item, index) => (
-                                <div className="eachItem" key={index}>
-                                    <h3>{item.name}</h3>
-                                    <i className="fa fa-edit add-btn" title="Edit item" onClick={() => handleEditItem(index)}></i>
-                                    <i className="fa fa-trash add-btn" title="Delete item" onClick={() => handleDeleteItem(index)}></i> 
-                                </div>
-                            ))
+                            toggle ? <i className="fa fa-plus add-btn" title="Add Item" onClick={handleAddItems}></i> :
+                                 <i className="far fa-edit add-btn" title="Update Item" onClick={handleAddItems}></i>
                         }
+                       
+                    </div>
+
+                    <div className="showItems">
                         
-                    </div>
+                        {
+                            items.map((item) => {
+                                return (
+                                    <div className="eachItem" key={item.id}>
+                                        <h3>{item.name}</h3>
+                                        <div className="todo-btn">
+                                            <i className="far fa-edit add-btn" title="Edit Item" onClick={() => handleEditItem(item.id)}></i>
+                                            <i className="far fa-trash-alt add-btn" title="Delete Item" onClick={() => handleDeleteItem(item.id)}></i>
+                                        </div>
+                                  </div>
+                                )
+                            })
 
-                    <div className="showitems">
-                        <button className="btn effect04" data-sm-link-text="Remove All" onClick={removeAllItems}>  <span> Check List</span></button>
+                        }
+                       
                     </div>
-
+                
+                    {/* clear all button  */}
+                    <div className="showItems">
+                        <button className="btn effect04" data-sm-link-text="Remove All" onClick={handleRemoveAllItems}><span> CHECK LIST </span> </button>
+                    </div>
                 </div>
-            </div>
+          </div>  
         </>
     )
 }
