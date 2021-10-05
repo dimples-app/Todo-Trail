@@ -4,23 +4,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: "Source Sans Pro", sans-serif; */
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 html {
   font-size: 62.5%;
-}
-
-
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .main-div {
@@ -28,15 +16,12 @@ body {
   background: #060822;
   display: flex;
   justify-content: center;
-  text-align: center;
-  color: white;
   /* align-items: center; */
 }
 
 .child-div {
   text-align: center;
   margin-top: 12rem;
-  
 }
 
 .child-div figure img {
@@ -52,7 +37,7 @@ body {
 }
 
 input {
-   /* display: block;  */
+  /* display: block; */
   min-width: 40rem;
   height: 3.4rem;
   padding: 2rem 1.2rem;
@@ -128,7 +113,7 @@ input:focus {
   margin-left: 1rem;
   min-width: 40rem;
   word-break: break-word;
-  background: orangered;
+  background: rgb(85, 41, 220);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -136,7 +121,7 @@ input:focus {
 
 .eachItem:hover {
   background: rgb(249, 249, 252);
-  color: orangered
+  color: rgb(85, 41, 220);
 }
 
 .showItems .eachItem h3 {
@@ -144,6 +129,7 @@ input:focus {
   font-size: 1.6rem;
   color: #fff;
 }
+
 .fa-trash-alt,
 .fa-edit {
   /* margin-left: -2.5rem; */
@@ -174,7 +160,7 @@ input:focus {
 }
 
 .eachItem:hover h3 {
-  color: goldenrod
+  color: rgb(85, 41, 220);
 }
 
 .btn {
@@ -211,7 +197,7 @@ input:focus {
 }
 
 .effect04:hover {
-  background-color: orangered
+  background-color: rgb(85, 41, 220);
 }
 
 .effect04:hover span {
@@ -235,4 +221,3 @@ input:focus {
   -webkit-transform: translateY(0) scale(1, 1);
   transform: translateY(0) scale(1, 1);
 }
-
