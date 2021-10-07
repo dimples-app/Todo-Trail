@@ -113,7 +113,7 @@ input:focus {
   margin-left: 1rem;
   min-width: 40rem;
   word-break: break-word;
-  background: rgb(85, 41, 220);
+  background: orangered;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,7 +121,7 @@ input:focus {
 
 .eachItem:hover {
   background: rgb(249, 249, 252);
-  color: rgb(85, 41, 220);
+  color: orangered;
 }
 
 .showItems .eachItem h3 {
@@ -160,7 +160,7 @@ input:focus {
 }
 
 .eachItem:hover h3 {
-  color: rgb(85, 41, 220);
+  color: orangered;
 }
 
 .btn {
@@ -197,7 +197,7 @@ input:focus {
 }
 
 .effect04:hover {
-  background-color: rgb(85, 41, 220);
+  background-color: orangered
 }
 
 .effect04:hover span {

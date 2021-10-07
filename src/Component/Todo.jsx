@@ -95,7 +95,7 @@ function Todo() {
                 <div className="child-div">
                     <figure>
                         <img src={logo} alt="todologo" />
-                        <figcaption>Add Your List Here ✌</figcaption>
+                        <figcaption>Add Your Todo List</figcaption>
                     </figure>
 
                     <div className="addItems">
