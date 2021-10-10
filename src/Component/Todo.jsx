@@ -25,9 +25,6 @@ function Todo() {
         localStorage.setItem("mytodolist", JSON.stringify(items))
     }, [items])
 
-    const handleChange = (event) => {
-        setInput(event.target.value)
-    }
 
     //Add items
     const handleAddItems = () => {
