@@ -19,7 +19,7 @@ function Todo() {
     const [input, setInput] = useState();
     const [items, setItems] = useState(getLocalData());
     const [editItem, setEditItem] = useState("");
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(true);
 
     useEffect(() => {
         localStorage.setItem("mytodolist", JSON.stringify(items))
@@ -78,6 +78,7 @@ function Todo() {
         setInput(newEditItem.name);
 
         setEditItem(id);
+
     }
 
     //Remove All Items
