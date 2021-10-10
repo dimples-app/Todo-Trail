@@ -78,7 +78,7 @@ function Todo() {
 
         setToggle(false);
 
-        setInput(newEditItem);
+        setInput(newEditItem.name);
 
         setEditItem(id);
     }
